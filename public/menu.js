@@ -36,25 +36,21 @@ let state = {
     {
       "screen": 0,
       "slide": 0,
-      "transition": 0,
       "direction": "right",
     },
     {
       "screen": 1,
       "slide": 1,
-      "transition": 1,
       "direction": "right",
     },
     {
       "screen": 2,
       "slide": 2,
-      "transition": 2,
       "direction": "right",
     },
     {
       "screen": 3,
       "slide": 3,
-      "transition": 3,
       "direction": "right",
     }
   ]
