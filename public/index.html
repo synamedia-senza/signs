@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>🍔 Menu</title>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div id="main">
+  <div class="overlay" id="toast">1</div>
+  <div class="overlay" id="settings">
+      <div class="settings-row selected-row" id="order">
+          <div class="settings-button" id="order-0">Identical</div>
+          <div class="settings-button" id="order-1">Ordered</div>
+          <div class="settings-button" id="order-2">Random</div>
+      </div>
+      <div class="settings-row" id="change">
+          <div class="settings-button" id="change-0">Simultaneous</div>
+          <div class="settings-button" id="change-1">Sequential</div>
+          <div class="settings-button" id="change-2">Random</div>
+      </div>
+      <div class="settings-row" id="transition">
+          <div class="settings-button" id="transition-0">Fade</div>
+          <div class="settings-button" id="transition-1">Slide</div>
+          <div class="settings-button" id="transition-2">Slide Over</div>
+      </div>
+      <div class="settings-row" id="speed">
+          <div class="settings-button" id="speed-0">Slow</div>
+          <div class="settings-button" id="speed-1">Medium</div>
+          <div class="settings-button" id="speed-2">Fast</div>
+      </div>
+  </div>
+</div>
+</body>
+<script src="js/socket.io-1.0.0.js"></script>
+<script src="menu.js"></script>
+</html>

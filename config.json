@@ -1,0 +1,44 @@
+{
+  "images": [
+    "shack-shack.jpg",
+    "ikea.jpg",
+    "nandos.jpg",
+    "timbits.jpg",
+    "in-n-out.jpg",
+    "mcdo-japan.jpg",
+    "five-guys.jpg",
+    "van-leeuwen.png"
+  ],
+  "settings": {
+    "order": 1,
+    "change": 0,
+    "transition": 1,
+    "speed": 1
+  },
+  "screens": [
+    {
+      "screen": 0,
+      "slide": 0,
+      "transition": 2,
+      "direction": "right"
+    },
+    {
+      "screen": 1,
+      "slide": 1,
+      "transition": 2,
+      "direction": "right"
+    },
+    {
+      "screen": 2,
+      "slide": 2,
+      "transition": 2,
+      "direction": "right"
+    },
+    {
+      "screen": 3,
+      "slide": 3,
+      "transition": 2,
+      "direction": "right"
+    }
+  ]
+}

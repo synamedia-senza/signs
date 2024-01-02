@@ -1,0 +1,95 @@
+body {
+  width: 1920px;
+  height: 1080px;
+	margin: 0px;
+	background-color: black;
+  overflow: hidden;
+}
+
+#main {
+  overflow: hidden;
+  position: relative;
+  width: 1920px;
+  height: 1080px;
+	background-color: white;
+  text-align: center;
+}
+
+.slide {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 1920px;
+  height: 1080px;
+}
+
+.background {
+  width: 1920px;
+  height: 1080px;
+}
+
+.hidden {
+  display: none;
+}
+
+.overlay {
+  background-color: rgba(200,200,200,0.5);
+  border-radius: 20px;
+  margin:50px;
+  position: absolute;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: #333;
+  text-align: center;
+  z-index: 3;
+}
+
+#toast {
+  padding-top: 50px;
+  height: 250px;
+  width: 300px;  
+  top: 500px;
+  left: 810px;
+	font: 120pt Helvetica; 
+	font-weight: bold;
+}
+
+#settings {
+  top: 200px;
+  left: 330px;
+	font: 30pt Helvetica; 
+	font-weight: bold;
+  color: black;
+}
+
+.settings-row {
+  border-radius: 20px;
+  padding: 20px;
+  margin: 0px 30px 0px 30px;
+}
+
+.selected-row {
+  background-color: rgba(255,255,255,0.3);
+}
+
+.settings-button {
+  background-color: rgba(255,255,255,0.3);
+  border-radius: 20px;
+  padding: 20px;
+  margin: 15px;
+  width: 280px;
+  color: white;
+  display: inline-block;
+}
+
+.selected {
+  color: black;
+}
+
+#order {
+  margin-top: 30px;
+}
+
+#speed {
+  margin-bottom: 30px;
+}
