@@ -218,67 +218,64 @@ function swap(from, to) {
   slides[from].classList.add("hidden");
 }
 
+function animate(steps, frameDelay, increment, cleanup) {
+  let count = 0;
+  let interval = setInterval(() => {
+    increment(count);
+    count++;
+    
+    if (count == steps) {
+      clearInterval(interval);
+      cleanup();
+    }
+  }, frameDelay);
+}
+
 function fade(from, to) {
   let fromSlide = slides[from];
   let toSlide = slides[to];
+  let opacity = 0.0;
 
-  toSlide.style.opacity = 0.0;
+  toSlide.style.opacity = opacity;
   toSlide.classList.remove("hidden");
   fromSlide.style.zIndex = 1;
   toSlide.style.zIndex = 2;
   
-  let steps = 100;
-  let count = 0;
-  let step = 0.01;
-  let opacity = 0.0;
-  
-  let interval = setInterval(() => {
-    opacity += step;
-    count++;
-    
+  animate(100, 6, (count) => {
+    opacity += 0.01;
     toSlide.style.opacity = opacity;
-
-    if (count == steps) {
-      clearInterval(interval);
-      fromSlide.classList.add("hidden");
-      fromSlide.style.opacity = 1.0;
-      toSlide.style.zIndex = 1;
-    }
-  }, 6);
+  }, () => {
+    fromSlide.classList.add("hidden");
+    fromSlide.style.opacity = 1.0;
+    toSlide.style.zIndex = 1;
+  });
 }
 
 function slide(from, to, direction, over = false) {
   let fromSlide = slides[from];
   let toSlide = slides[to];
-
-  toSlide.style.left = width + "px";
-  toSlide.classList.remove("hidden");
   
   let steps = 100;
-  let count = 0;
   let step = (width / steps) * (direction == "left" ? 1 : -1);
   let fromLeft = 0;
   let toLeft = width * (direction == "left" ? -1 : 1);
 
+  toSlide.style.left = width + "px";
+  toSlide.classList.remove("hidden");
   fromSlide.style.zIndex = 1;
   toSlide.style.zIndex = 2;
   
-  let interval = setInterval(() => {
+  animate(steps, 6, (count) => {
     fromLeft += step;
     toLeft += step;
-    count++;
-    
     if (!over) fromSlide.style.left = fromLeft + "px";
     toSlide.style.left = toLeft + "px";
-
-    if (count == steps) {
-      clearInterval(interval);
-      fromSlide.classList.add("hidden");
-      fromSlide.style.left = "0px";
-      toSlide.style.left = "0px";
-      toSlide.style.zIndex = 1;
-    }
-  }, 6);
+  }, () => {
+    fromSlide.classList.add("hidden");
+    fromSlide.style.left = "0px";
+    toSlide.style.left = "0px";
+    toSlide.style.zIndex = 1;
+  });
 }
 
 function slideOver(from, to, direction) {
