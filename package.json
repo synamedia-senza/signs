@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "Signs packages",
   "main": "signs.js",
+  "scripts": {
+    "start": "node signs.js"
+  },
   "dependencies": {
     "errorhandler": "^1.3.5",
     "express": "^4.10.4",

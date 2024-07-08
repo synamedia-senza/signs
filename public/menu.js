@@ -14,7 +14,6 @@ let settingsSections = ["order", "change", "transition", "speed"];
 let slides = [];
 let current = 0;
 let screen = 0;
-let transition = 1; // 0: swap, 1: fade, 2: slide, 3: slideOver
 let state = {
   "images": [
     "shack-shack.jpg",
@@ -155,22 +154,13 @@ function escape() {
   if (settingsMode) {
     settings.style.opacity = 1.0;
   } else {
-    let steps = 100;
-    let count = 0;
-    let step = 0.01;
     let opacity = 1.0;
-
-    settingsInterval = setInterval(() => {
-      opacity -= step;
-      count++;
-
+    animate(100, 10, (count) => {
+      opacity -= 0.01;
       settings.style.opacity = opacity;
-
-      if (count == steps) {
-        clearInterval(settingsInterval);
-        settings.style.opacity = 0.0;
-      }
-    }, 10);
+    }, () => {
+      settings.style.opacity = 0.0;
+    });
   }
 }
 
@@ -205,7 +195,7 @@ function showToast(value) {
 }
 
 function change(from, to, direction) {
-  switch (transition) {
+  switch (state.settings.transition) {
     case 0: fade(from, to); break;
     case 1: slide(from, to, direction); break;
     case 2: slideOver(from, to, direction); break;
@@ -260,7 +250,7 @@ function slide(from, to, direction, over = false) {
   let fromLeft = 0;
   let toLeft = width * (direction == "left" ? -1 : 1);
 
-  toSlide.style.left = width + "px";
+  toSlide.style.left = toLeft;
   toSlide.classList.remove("hidden");
   fromSlide.style.zIndex = 1;
   toSlide.style.zIndex = 2;
@@ -285,9 +275,6 @@ function slideOver(from, to, direction) {
 function updateSlides() {
   if (state.screens && state.screens.length > screen) {
     let myState = state.screens[screen];
-    if (myState.transition !== undefined) {
-      transition = myState.transition;
-    }
     if (myState.slide !== undefined) {
       let next = myState.slide;
       if (current != next) {

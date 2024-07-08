@@ -2,7 +2,7 @@
 // Andrew Zamler-Carhart
 
 // To run the server:
-// HOSTNAME=localhost PORT=1234 node signs.js
+// HOSTNAME=localhost PORT=8080 node signs.js
 // or just:
 // node signs.js
 
@@ -12,7 +12,7 @@ let express = require("express"),
 	errorHandler = require('errorhandler'),
 	state = require('./config.json'),
 	hostname = process.env.HOSTNAME || 'localhost',
-	port = parseInt(process.env.PORT, 10) || 1234,
+	port = parseInt(process.env.PORT, 10) || 8080,
 	publicDir = process.argv[2] || __dirname + '/public',
 	io = require('socket.io').listen(app.listen(port)),
 globalSocket = null;
@@ -47,9 +47,6 @@ io.sockets.on('connection', (socket) => {
     
     if (orderChanged) {
       orderScreens(message.order);
-    }
-    if (transitionChanged) {
-      syncTransition();
     }
     if (speedChanged) {
       stopLoop();
@@ -117,14 +114,9 @@ function syncSlide(slide) {
   state.screens.forEach((screen) => screen.slide = slide);
 }
 
-function syncTransition(transition) {
-  state.screens.forEach((screen) => screen.transition = state.settings.transition);
-}
-
 function randomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
 orderScreens(state.settings.order);
-syncTransition();
 startLoop();
